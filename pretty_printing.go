@@ -26,9 +26,9 @@ func prettyPrintWeeklyList(l *WeeklyList) {
 	if l == nil {
 		return
 	}
-	fmt.Printf("Weekly Menu for %s\n", l.Meta.RefTitle)
+	fmt.Printf("Weekly Menu for: %s\n", l.Meta.RefTitle)
 	for _, m := range l.MealDates {
-		fmt.Printf("Options on %s\n", m.Date)
+		fmt.Printf("Options on %s:\n", m.Date)
 		var keys []string
 		for n := range m.Courses {
 			keys = append(keys, n)
