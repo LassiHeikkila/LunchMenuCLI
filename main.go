@@ -11,6 +11,7 @@ var (
 	weeklyFlag        *bool   = flag.Bool("weekly", false, "Get weekly menu instead of daily")
 	restaurantFlag    *string = flag.String("restaurant", "", "Use this restaurant id instead of default 121 (Sodexo Galaksi)")
 	raw               *bool   = flag.Bool("raw", false, "Print raw menu JSON to assist debugging")
+	inEnglish         *bool   = flag.Bool("english", false, "Print menu in English, if possible")
 )
 
 func main() {
@@ -25,6 +26,11 @@ func main() {
 	restaurant := defaultRestaurant
 	if *restaurantFlag != "" {
 		restaurant = RestaurantId(*restaurantFlag)
+	}
+
+	lang := LanguageFI
+	if *inEnglish {
+		lang = LanguageEN
 	}
 
 	time := time.Now()
@@ -51,14 +57,14 @@ func main() {
 			fmt.Println("Error while parsing daily menu:", err)
 			return
 		}
-		prettyPrintDailyList(dailylist)
+		prettyPrintDailyList(dailylist, lang)
 	case WeeklyMenu:
 		weeklylist, err := parseWeeklyJson(data)
 		if err != nil {
 			fmt.Println("Error while parsing weekly menu:", err)
 			return
 		}
-		prettyPrintWeeklyList(weeklylist)
+		prettyPrintWeeklyList(weeklylist, lang)
 	}
 
 	return
