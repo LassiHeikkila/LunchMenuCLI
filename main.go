@@ -1,60 +1,65 @@
 package main
 
 import (
-    "flag"
-    "fmt"
-    "time"
+	"flag"
+	"fmt"
+	"time"
 )
 
 var (
-    defaultRestaurant         = SodexoGalaksi
-    weeklyFlag        *bool   = flag.Bool("weekly", false, "Get weekly menu instead of daily")
-    restaurantFlag    *string = flag.String("restaurant", "", "Use this restaurant id instead of default 121 (Sodexo Galaksi)")
+	defaultRestaurant         = SodexoGalaksi
+	weeklyFlag        *bool   = flag.Bool("weekly", false, "Get weekly menu instead of daily")
+	restaurantFlag    *string = flag.String("restaurant", "", "Use this restaurant id instead of default 121 (Sodexo Galaksi)")
+	raw               *bool   = flag.Bool("raw", false, "Print raw menu JSON to assist debugging")
 )
 
 func main() {
-    flag.Parse()
-    fmt.Println("Checking what's for lunch")
+	flag.Parse()
+	fmt.Println("Checking what's for lunch")
 
-    menuType := DailyMenu
-    if *weeklyFlag {
-        menuType = WeeklyMenu
-    }
+	menuType := DailyMenu
+	if *weeklyFlag {
+		menuType = WeeklyMenu
+	}
 
-    restaurant := defaultRestaurant
-    if *restaurantFlag != "" {
-        restaurant = RestaurantId(*restaurantFlag)
-    }
+	restaurant := defaultRestaurant
+	if *restaurantFlag != "" {
+		restaurant = RestaurantId(*restaurantFlag)
+	}
 
-    time := time.Now()
+	time := time.Now()
 
-    url := constructUrl(menuType, restaurant, time)
-    if url == "" {
-        fmt.Println("Failed to construct a valid URL!")
-        return
-    }
+	url := constructUrl(menuType, restaurant, time)
+	if url == "" {
+		fmt.Println("Failed to construct a valid URL!")
+		return
+	}
 
-    data, err := fetchJson(url)
-    if err != nil {
-        fmt.Println("Error while fetching menu:", err)
-    }
+	data, err := fetchJson(url)
+	if err != nil {
+		fmt.Println("Error while fetching menu:", err)
+	}
 
-    switch menuType {
-    case DailyMenu:
-        dailylist, err := parseDailyJson(data)
-        if err != nil {
-            fmt.Println("Error while parsing daily menu:", err)
-            return
-        }
-        prettyPrintDailyList(dailylist)
-    case WeeklyMenu:
-        weeklylist, err := parseWeeklyJson(data)
-        if err != nil {
-            fmt.Println("Error while parsing weekly menu:", err)
-            return
-        }
-        prettyPrintWeeklyList(weeklylist)
-    }
+	if *raw {
+		fmt.Print("Raw JSON:\n", string(data), "\n\n")
+	}
 
-    return
+	switch menuType {
+	case DailyMenu:
+		dailylist, err := parseDailyJson(data)
+		if err != nil {
+			fmt.Println("Error while parsing daily menu:", err)
+			return
+		}
+		prettyPrintDailyList(dailylist)
+	case WeeklyMenu:
+		weeklylist, err := parseWeeklyJson(data)
+		if err != nil {
+			fmt.Println("Error while parsing weekly menu:", err)
+			return
+		}
+		prettyPrintWeeklyList(weeklylist)
+	}
+
+	return
 }
