@@ -1,11 +1,11 @@
 package main
 
 import (
-    "testing"
+	"testing"
 )
 
 var (
-    daily_json_example string = `{
+	daily_json_example string = `{
     "meta":{
         "generated_timestamp":1584003734,
         "ref_url":"https:\/\/www.sodexo.fi\/ravintolat\/ravintola-galaksi",
@@ -62,7 +62,7 @@ var (
         }
     }
 }`
-    weekly_json_example string = `{
+	weekly_json_example string = `{
     "mealdates": [
         {
             "courses": {
@@ -345,31 +345,31 @@ var (
 )
 
 func TestParsingDailyJson(t *testing.T) {
-    daily_list, err := parseDailyJson([]byte(daily_json_example))
+	daily_list, err := parseDailyJson([]byte(daily_json_example))
 
-    if err != nil {
-        t.Error("Error returned", err)
-    }
-    if daily_list == nil {
-        t.Fatal("Nil result")
-    }
+	if err != nil {
+		t.Error("Error returned", err)
+	}
+	if daily_list == nil {
+		t.Fatal("Nil result")
+	}
 
-    if daily_list.Meta.RefTitle != "Ravintola Galaksi" {
-        t.Error("Wrong ref title:", daily_list.Meta.RefTitle)
-    }
+	if daily_list.Meta.RefTitle != "Ravintola Galaksi" {
+		t.Error("Wrong ref title:", daily_list.Meta.RefTitle)
+	}
 
-    if daily_list.Courses["1"].TitleFi != "Lihapullat L,G, Kermakastike L,G, Perunasose L,G" {
-        t.Error("Wrong entry for course 1:", daily_list.Courses["1"].TitleFi)
-    }
+	if daily_list.Courses["1"].TitleFi != "Lihapullat L,G, Kermakastike L,G, Perunasose L,G" {
+		t.Error("Wrong entry for course 1:", daily_list.Courses["1"].TitleFi)
+	}
 }
 
 func TestParsingWeeklyJson(t *testing.T) {
-    weekly_list, err := parseWeeklyJson([]byte(weekly_json_example))
+	weekly_list, err := parseWeeklyJson([]byte(weekly_json_example))
 
-    if err != nil {
-        t.Error("Error returned", err)
-    }
-    if weekly_list == nil {
-        t.Fatal("Nil result")
-    }
+	if err != nil {
+		t.Error("Error returned", err)
+	}
+	if weekly_list == nil {
+		t.Fatal("Nil result")
+	}
 }
