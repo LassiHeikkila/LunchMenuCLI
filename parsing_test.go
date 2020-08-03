@@ -342,6 +342,72 @@ var (
     },
     "timeperiod": "9.3. - 15.3."
 }`
+
+	weekly_json_example2 = `{
+		"meta":{
+			"generated_timestamp":1596439499,
+			"ref_url":"https:\/\/www.sodexo.fi\/ravintolat\/ravintola-galaksi",
+			"ref_title":"Ravintola Galaksi"
+			},
+		"timeperiod":"3.8. - 9.8.",
+		"mealdates":[
+			{
+				"date":"Maanantai",
+				"courses":{
+					"1":{"title_fi":"Pasta Bolognese ja Pecorinojuustoa","title_en":"Pasta Bolognese ja Pecorino cheese","category":"Kotiruoka","properties":"L, M","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"2":{"title_fi":"Bradwurstimakkarat L,M,G, hapankaalia L,G, perunasosetta L,G","title_en":"Bradwurst sausage, sauerkraut, mashed potatoes","category":"Kotiruoka","properties":"G, L","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"3":{"title_fi":"Tofu-ratatouille L,M,G (Tarjolla Galaksissa)","title_en":"Tofu ratatouille","category":"Kasvisruoka","properties":"G, L, M","price":""},
+					"4":{"title_fi":"Galaksi: Pinaattikeittoa L,G, kananmunaa L,M,G","title_en":"Spinach soup, egg","category":"Kasviskeitto","properties":"G, L","price":""},
+					"5":{"title_fi":"Galaksin Salad bar: Katkarapusalaatti L,M,G, Kanasalaatti L,M,G, valmiina annosrasioissa","title_en":"Salad bar: Shrimp salad, Chicken salad","category":"Salaattibaari","properties":"G, L, M","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"6":{"title_fi":"Aprikoosimoussea VL,G, saattaa si\u00e4lt\u00e4\u00e4 j\u00e4\u00e4mi\u00e4; gluteeni, kananmuna","title_en":"Apricot mousse","category":"J\u00e4lkiruoka","properties":"G, VL","price":""}
+				}
+			},
+			{
+				"date":"Tiistai",
+				"courses":{
+					"1":{"title_fi":"Paistetua seit\u00e4, tzazikia sek\u00e4 keitetyt perunat","title_en":"Fried seithe, tzaziki and boiled potatoes","category":"Kotiruoka","properties":"L","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"2":{"title_fi":"Palapaisti, keitetyt perunat","title_en":"Meat stew, boiled potatoes","category":"Kotiruoka 2","properties":"L","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"3":{"title_fi":"Vuohenjuustopastaa (Tarjolla Galaksissa)","title_en":"Goat cheese pasta","category":"Kasvisruoka","properties":"VL","price":""},
+					"4":{"title_fi":"Galaksi: Herkkusienikeittoa","title_en":"Mushroom soup","category":"Kasviskeitto","properties":"L","price":""},
+					"5":{"title_fi":"Salad bar:","title_en":"Salad bar:","category":"Salaattibaari","properties":"L","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"6":{"title_fi":"Vadelmarahkaa","title_en":"Rasberry quark","category":"J\u00e4lkiruoka","properties":"G, L","price":""}
+				}
+			},
+			{
+				"date":"Keskiviikko",
+				"courses":{
+					"1":{"title_fi":"Jauhelihamureketta, pippurikastike sek\u00e4 perunasose","title_en":"Meat loaf, pepper sauce, mashed potatoes","category":"Kotiruoka 2","properties":"","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"2":{"title_fi":"Teriyakiporsasta, basmatiriisi\u00e4","title_en":"Teriyaki pork, basmatirice","category":"Kotiruoka","properties":"M","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"3":{"title_fi":"Kasvis-kev\u00e4tk\u00e4\u00e4ryleet, inkiv\u00e4\u00e4riraitaa (Tarjolla Galaksissa)","title_en":"Vegetable spring rolls, ginger raita","category":"Kasvisruoka","properties":"G","price":""},
+					"4":{"title_fi":"Galaksi: Mustajuurisosekeitto","title_en":"Black salsify puree soup","category":"Kasviskeitto","properties":"G, L","price":""},
+					"5":{"title_fi":"Salad bar:","title_en":"Salad bar:","category":"Salaattibaari","properties":"","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"6":{"title_fi":"Mokkakiisseli","title_en":"Coffee kissel","category":"J\u00e4lkiruoka","properties":"G","price":""}
+				}
+			},
+			{
+				"date":"Torstai",
+				"courses":{
+					"1":{"title_fi":"Punainen broileri-thaicurry , riisi\u00e4","title_en":"Red chicken thaicurry, rice","category":"Kotiruoka 2","properties":"G, M","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"2":{"title_fi":"H\u00e4rk\u00e4 fajitas, ranskankermaa","title_en":"Beef fajitas, sour cream","category":"Kotiruoka","properties":"L","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"3":{"title_fi":"Risotto milanese (Tarjolla Galaksissa)","title_en":"Risotto milanese","category":"Kasvisruoka","properties":"G","price":""},
+					"4":{"title_fi":"Galaksi: Bataattisosekeitto","title_en":"Sweet potato soup","category":"Kasviskeitto","properties":"G, L","price":""},
+					"5":{"title_fi":"Salad bar:","title_en":"Salad bar:","category":"Salaattibaari","properties":"L","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"6":{"title_fi":"Mustikkapiirakka, vaniljakastike","title_en":"Blueberry pie, vanilja sauce","category":"J\u00e4lkiruoka","properties":"","price":""}
+				}
+			},
+			{
+				"date":"Perjantai",
+				"courses":{
+					"1":{"title_fi":"Broileri-chorizzopaella","title_en":"Chicken chorizzo paella","category":"Kotiruoka","properties":"G, M","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"2":{"title_fi":"Paistetut muikut, juures-perunasose, tartar","title_en":"Fried vendase, mashed root vegetable and potatoes, tartar sauce","category":"Kotiruoka","properties":"L","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"3":{"title_fi":"Herkkusieni-h\u00e4rk\u00e4papulasagnettea (Tarjolla Galaksissa)","title_en":"Mushroom broad bean lasagnette","category":"Kasvisruoka","properties":"M","price":""},
+					"4":{"title_fi":"Galaksi: Sipulikeittoa","title_en":"Onion soup","category":"Kasviskeitto","properties":"G, M","price":""},
+					"5":{"title_fi":"Salad bar:","title_en":"Salad bar:","category":"Salaattibaari","properties":"L","price":"9,90 \u20ac \/ 10,50 \u20ac"},
+					"6":{"title_fi":"Persikkakiisseli","title_en":"Peach kissel","category":"J\u00e4lkiruoka","properties":"G, M","price":""}
+				}
+			}
+		]
+	}`
 )
 
 func TestParsingDailyJson(t *testing.T) {
@@ -367,7 +433,18 @@ func TestParsingWeeklyJson(t *testing.T) {
 	weekly_list, err := parseWeeklyJson([]byte(weekly_json_example))
 
 	if err != nil {
-		t.Error("Error returned", err)
+		t.Error("Error returned:", err)
+	}
+	if weekly_list == nil {
+		t.Fatal("Nil result")
+	}
+}
+
+func TestParsingWeeklyJson2(t *testing.T) {
+	weekly_list, err := parseWeeklyJson([]byte(weekly_json_example2))
+
+	if err != nil {
+		t.Error("Error returned:", err)
 	}
 	if weekly_list == nil {
 		t.Fatal("Nil result")
