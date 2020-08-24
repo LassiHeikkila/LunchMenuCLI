@@ -9,7 +9,18 @@ func prettyPrintDailyList(l *DailyList, lan Language) {
 	if l == nil {
 		return
 	}
-	fmt.Printf("Daily Menu for %s\n", l.Meta.RefTitle)
+
+	var intro_str string
+
+	switch lan {
+	case LanguageEN:
+		intro_str = "Today's menu for"
+	case LanguageFI:
+		intro_str = "Ruokalista tänään ravintolassa"
+	}
+
+
+	fmt.Printf("%s: %s\n", intro_str, l.Meta.RefTitle)
 
 	var keys []string
 	for n := range l.Courses {
@@ -30,9 +41,21 @@ func prettyPrintWeeklyList(l *WeeklyList, lan Language) {
 	if l == nil {
 		return
 	}
-	fmt.Printf("Weekly Menu for: %s\n", l.Meta.RefTitle)
+	var intro_str string
+	var option_str string
+
+	switch lan {
+	case LanguageEN:
+		intro_str = "This week's menu for"
+		option_str = "Options on"
+	case LanguageFI:
+		intro_str = "Tämän viikon ruokalista ravintolassa"
+		option_str = "Vaihtoehdot"
+	}
+
+	fmt.Printf("%s: %s\n", intro_str, l.Meta.RefTitle)
 	for _, m := range l.MealDates {
-		fmt.Printf("Options on %s:\n", dateToLang(m.Date, lan))
+		fmt.Printf("%s %s:\n", option_str, dateToLang(m.Date, lan))
 		var keys []string
 		for n := range m.Courses {
 			keys = append(keys, n)
