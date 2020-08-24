@@ -16,7 +16,6 @@ var (
 
 func main() {
 	flag.Parse()
-	fmt.Println("Checking what's for lunch")
 
 	menuType := DailyMenu
 	if *weeklyFlag {
@@ -31,6 +30,13 @@ func main() {
 	lang := LanguageFI
 	if *inEnglish {
 		lang = LanguageEN
+	}
+
+	switch lang {
+	case LanguageFI:
+		fmt.Println("Haetaan ruokalistaa...")
+	case LanguageEN:
+		fmt.Println("Checking what's for lunch")
 	}
 
 	time := time.Now()
