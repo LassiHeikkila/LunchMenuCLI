@@ -27,9 +27,26 @@ func main() {
 		restaurant = RestaurantId(*restaurantFlag)
 	}
 
+	when := "tänään"
+
 	lang := LanguageFI
 	if *inEnglish {
 		lang = LanguageEN
+		when = "today"
+	}
+
+	t := time.Now()
+	switch flag.Arg(0) {
+	case "":
+		break
+	case "tomorrow":
+		lang = LanguageEN
+		t = t.Add(24 * time.Hour)
+		when = "tomorrow"
+	case "huomenna":
+		lang = LanguageFI
+		t = t.Add(24 * time.Hour)
+		when = "huomenna"
 	}
 
 	switch lang {
@@ -39,9 +56,7 @@ func main() {
 		fmt.Println("Checking what's for lunch")
 	}
 
-	time := time.Now()
-
-	url := constructUrl(menuType, restaurant, time)
+	url := constructUrl(menuType, restaurant, t)
 	if url == "" {
 		fmt.Println("Failed to construct a valid URL!")
 		return
@@ -63,7 +78,7 @@ func main() {
 			fmt.Println("Error while parsing daily menu:", err)
 			return
 		}
-		prettyPrintDailyList(dailylist, lang)
+		prettyPrintDailyList(dailylist, lang, when)
 	case WeeklyMenu:
 		weeklylist, err := parseWeeklyJson(data)
 		if err != nil {

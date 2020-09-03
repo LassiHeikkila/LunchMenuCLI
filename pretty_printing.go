@@ -5,7 +5,7 @@ import (
 	"sort"
 )
 
-func prettyPrintDailyList(l *DailyList, lan Language) {
+func prettyPrintDailyList(l *DailyList, lan Language, when string) {
 	if l == nil {
 		return
 	}
@@ -14,11 +14,10 @@ func prettyPrintDailyList(l *DailyList, lan Language) {
 
 	switch lan {
 	case LanguageEN:
-		intro_str = "Today's menu for"
+		intro_str = fmt.Sprintf("%s's menu for", when)
 	case LanguageFI:
-		intro_str = "Ruokalista tänään ravintolassa"
+		intro_str = fmt.Sprintf("Ruokalista %s ravintolassa", when)
 	}
-
 
 	fmt.Printf("%s: %s\n", intro_str, l.Meta.RefTitle)
 
